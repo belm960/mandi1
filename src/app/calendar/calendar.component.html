@@ -1,0 +1,63 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Events</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a href="#" onClick="return false;">
+                <i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="breadcrumb-item active">Events</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="card">
+          <div class="card-header container-fluid">
+            <div class="row">
+              <div class="col-md-10">
+                <h4>Calendar</h4>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-2 col-sm-12 p-l-30">
+                <div class="m-b-25">
+                  <button mat-raised-button color="primary" (click)="addNewEvent()">Add Event</button>
+                </div>
+                <h5>My Calendars</h5>
+                <div class="filter-container">
+                  <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
+                    <mat-radio-button class="example-radio-button ml-0 filter" *ngFor="let filter of filters"
+                      [value]="filter.name" [checked]="filter.checked ==='true'" (change)="changeCategory($event)">
+                      {{filter.value}}
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+              <div class="col-md-10 col-sm-12">
+                <div class="panel-body">
+                  <full-calendar #calendar defaultView="dayGridMonth" [header]="{
+                                        left: 'prev,next today',
+                                        center: 'title',
+                                        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'  
+                                      }" [plugins]="calendarPlugins" [weekends]="calendarWeekends"
+                    (eventRender)="handleEventRender($event)" (eventClick)="eventClick($event)"
+                    [events]="calendarEvents" (dateClick)="addNewEvent()">
+                  </full-calendar>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
