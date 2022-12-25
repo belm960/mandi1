@@ -1,4 +1,4 @@
 export const environment = {
   production: true
 };
-export const apiUrl = 'https://ethiohealthsystems.herokuapp.com'
+export const apiUrl = 'https://localhost:8080'

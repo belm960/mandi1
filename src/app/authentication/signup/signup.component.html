@@ -6,6 +6,27 @@
           Register
         </span>
         <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="fname" required>
+          <mat-icon matSuffix>face</mat-icon>
+          <mat-error *ngIf="loginForm.get('fname').hasError('required')">
+            First Name is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lname" required>
+          <mat-icon matSuffix>face</mat-icon>
+          <mat-error *ngIf="loginForm.get('lname').hasError('required')">
+            Last is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Middle Name</mat-label>
+          <input matInput formControlName="gname" required>
+          <mat-icon matSuffix>face</mat-icon>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="outline">
           <mat-label>Username</mat-label>
           <input matInput formControlName="username" required>
           <mat-icon matSuffix>face</mat-icon>
@@ -19,6 +40,14 @@
           <mat-icon matSuffix>mail</mat-icon>
           <mat-error *ngIf="loginForm.get('email').hasError('required') || loginForm.get('email').touched">
             Please enter a valid email address
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Phone Number</mat-label>
+          <input matInput formControlName="phonenum" required>
+          <mat-icon matSuffix>face</mat-icon>
+          <mat-error *ngIf="loginForm.get('phonenum').hasError('required')">
+            Phone Number is required
           </mat-error>
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="outline">
@@ -38,6 +67,9 @@
           <mat-error *ngIf="loginForm.get('cpassword').hasError('required')">
             Confirm Password is required
           </mat-error>
+          <mat-error *ngIf="loginForm.value.cpassword!=loginForm.value.password">
+            Password Doesn't Match
+          </mat-error>
         </mat-form-field>
         <div class="flex-sb-m w-full p-t-15 p-b-20">
           <div>
@@ -47,7 +79,7 @@
           </div>
         </div>
         <div class="container-login100-form-btn">
-          <button mat-flat-button color="primary" class="login100-form-btn" type="submit">
+          <button mat-flat-button color="primary" class="login100-form-btn" type="submit" [disabled]="(!loginForm.valid)&&(loginForm.value.cpassword!=loginForm.value.password)">
             Register
           </button>
         </div>

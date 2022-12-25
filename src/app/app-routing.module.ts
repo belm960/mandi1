@@ -17,6 +17,11 @@ const routes: Routes = [
           import("./admin/admin.module").then((m) => m.AdminModule),
       },
       {
+        path: "pages",
+        loadChildren: () =>
+          import("./pages/pages.module").then((m) => m.PagesModule),
+      },
+      {
         path: "calendar",
         loadChildren: () =>
           import("./calendar/calendar.module").then((m) => m.CalendarsModule),

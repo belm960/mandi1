@@ -84,16 +84,18 @@ export class SidebarComponent implements OnInit {
       const userRole = this.authService.getRole();
       this.userFullName = this.authService.getUserFullName();
       this.userImg = this.authService.getUserImg();
-
-     /**  this.sidebarItems = ROUTES.filter(
-        (x) => x.role.indexOf(userRole) !== -1 || x.role.indexOf('All') !== -1
-      );
       if (userRole === Role.Admin) {
         this.userType = Role.Admin;
-      }*/
+      }else if (userRole === Role.Member) {
+        this.userType = Role.Member;
+      }else if (userRole === Role.User) {
+        this.userType = Role.Admin;
+      }
+      console.log(userRole)
+      this.sidebarItems = ROUTES.filter(
+        (x) => x.role.indexOf(userRole) !== -1 || x.role.indexOf('All') !== -1
+      );
     }
-
-    // this.sidebarItems = ROUTES.filter((sidebarItem) => sidebarItem);
     this.initLeftSidebar();
     this.bodyTag = this.document.body;
   }

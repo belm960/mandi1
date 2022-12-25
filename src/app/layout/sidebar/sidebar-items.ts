@@ -11,20 +11,35 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: true,
     badge: '',
     badgeClass: '',
+    role: ['All'],
     submenu: [],
   },
 
   // Admin Modules
   {
+    path: '/pages/editUser',
+    title: 'Profile',
+    moduleName: 'pages',
+    iconType: 'material-icons-two-tone',
+    icon: 'person',
+    class: '',
+    groupTitle: false,
+    badge: '',
+    badgeClass: '',
+    role: ['Member','User','Admin'],
+    submenu: [],
+  },
+  {
     path: '',
-    title: 'Home',
+    title: 'Dashboards',
     moduleName: 'dashboard',
     iconType: 'material-icons-two-tone',
-    icon: 'home',
+    icon: 'assessment',
     class: 'menu-toggle',
     groupTitle: false,
     badge: '',
     badgeClass: '',
+    role: ['Admin'],
     submenu: [
       {
         path: '/admin/dashboard/main',
@@ -36,6 +51,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -48,9 +64,63 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
     ],
+  },
+
+  {
+    path: '/pages/homepage',
+    title: 'Home',
+    moduleName: 'pages',
+    iconType: 'material-icons-two-tone',
+    icon: 'home',
+    class: '',
+    groupTitle: false,
+    badge: '',
+    badgeClass: '',
+    role: ['Member','User','Admin'],
+    submenu: [],
+  },
+  {
+    path: '/pages/advert',
+    title: 'Adds',
+    moduleName: 'pages',
+    iconType: 'material-icons-two-tone',
+    icon: 'shopping_cart',
+    class: '',
+    groupTitle: false,
+    badge: '',
+    badgeClass: '',
+    role: ['Member','User', 'Admin'],
+    submenu: [],
+  },
+  {
+    path: 'pages/myAdvert',
+    title: 'MY Adverts',
+    moduleName: 'pages',
+    iconType: 'material-icons-two-tone',
+    icon: 'dns',
+    class: '',
+    groupTitle: false,
+    badge: '',
+    badgeClass: '',
+    role: ['Member'],
+    submenu: [],
+  },
+  {
+    path: 'pages/editAdvert',
+    title: 'Add An Advert',
+    moduleName: 'pages',
+    iconType: 'material-icons-two-tone',
+    icon: 'add_shopping_cart',
+    class: '',
+    groupTitle: false,
+    badge: '',
+    badgeClass: '',
+    role: ['Admin'],
+    submenu: [],
   },
   
   
@@ -66,6 +136,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: true,
     badge: '',
     badgeClass: '',
+    role: ['Admin'],
     submenu: [],
   },
   {
@@ -78,6 +149,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: 'New',
     badgeClass: 'badge bg-blue sidebar-badge float-right',
+    role: ['Admin'],
     submenu: [],
   },
   {
@@ -90,6 +162,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: '',
     badgeClass: '',
+    role: ['Admin'],
     submenu: [],
   },
   {
@@ -102,6 +175,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: '',
     badgeClass: '',
+    role: ['Admin'],
     submenu: [],
   },
   {
@@ -114,6 +188,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: '',
     badgeClass: '',
+    role: ['Admin'],
     submenu: [
       {
         path: '/email/inbox',
@@ -125,6 +200,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -137,6 +213,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -149,6 +226,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
     ],
@@ -163,6 +241,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: '4',
     badgeClass: 'badge bg-orange sidebar-badge float-right',
+    role: ['Admin'],
     submenu: [
       {
         path: '/apps/chat',
@@ -174,6 +253,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -186,6 +266,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -198,6 +279,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -210,6 +292,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
     ],
@@ -224,6 +307,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: '',
     badgeClass: '',
+    role: ['Admin'],
     submenu: [
       {
         path: '/widget/chart-widget',
@@ -235,6 +319,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -247,6 +332,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
     ],
@@ -261,6 +347,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: true,
     badge: '',
     badgeClass: '',
+    role: ['Admin'],
     submenu: [],
   },
   {
@@ -273,6 +360,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: '',
     badgeClass: '',
+    role: ['Admin'],
     submenu: [
       {
         path: '/ui/alerts',
@@ -284,6 +372,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -296,6 +385,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -308,6 +398,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -320,6 +411,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -332,6 +424,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -344,6 +437,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -356,6 +450,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -368,6 +463,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -380,6 +476,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -392,6 +489,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -404,6 +502,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -416,6 +515,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -428,6 +528,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -440,6 +541,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -452,6 +554,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -464,6 +567,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -476,6 +580,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -488,6 +593,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
     ],
@@ -502,6 +608,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: '',
     badgeClass: '',
+    role: ['Admin'],
     submenu: [
       {
         path: '/forms/form-controls',
@@ -513,6 +620,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -525,6 +633,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -537,6 +646,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -549,6 +659,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -561,6 +672,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -573,6 +685,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
     ],
@@ -587,6 +700,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: '',
     badgeClass: '',
+    role: ['Admin'],
     submenu: [
       {
         path: '/tables/basic-tables',
@@ -598,6 +712,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -610,6 +725,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -622,6 +738,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
     ],
@@ -636,6 +753,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: '',
     badgeClass: '',
+    role: ['Admin'],
     submenu: [
       {
         path: '/media/gallery',
@@ -647,6 +765,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
     ],
@@ -661,6 +780,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: '7',
     badgeClass: 'badge bg-green sidebar-badge float-right',
+    role: ['Admin'],
     submenu: [
       {
         path: '/charts/echart',
@@ -672,6 +792,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -684,6 +805,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -696,6 +818,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -708,6 +831,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -720,6 +844,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
     ],
@@ -734,6 +859,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: '',
     badgeClass: '',
+    role: ['Admin'],
     submenu: [
       {
         path: '/timeline/timeline1',
@@ -745,6 +871,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -757,6 +884,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
     ],
@@ -771,6 +899,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: '',
     badgeClass: '',
+    role: ['Admin'],
     submenu: [
       {
         path: '/icons/material',
@@ -782,6 +911,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -794,6 +924,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
     ],
@@ -808,6 +939,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: '',
     badgeClass: '',
+    role: ['Admin'],
     submenu: [
       {
         path: '/authentication/signin',
@@ -819,6 +951,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -831,6 +964,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -843,6 +977,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -855,6 +990,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -867,6 +1003,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -879,6 +1016,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
     ],
@@ -893,6 +1031,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: '',
     badgeClass: '',
+    role: ['Admin'],
     submenu: [
       {
         path: '/extra-pages/profile',
@@ -904,6 +1043,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -916,6 +1056,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -928,6 +1069,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -940,6 +1082,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -952,6 +1095,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
     ],
@@ -966,6 +1110,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: '',
     badgeClass: '',
+    role: ['Admin'],
     submenu: [
       {
         path: '/maps/google',
@@ -977,6 +1122,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
     ],
@@ -991,6 +1137,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: '',
     badgeClass: '',
+    role: ['Admin'],
     submenu: [
       {
         path: '/multilevel/first1',
@@ -1002,6 +1149,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
       {
@@ -1014,6 +1162,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [
           {
             path: '/multilevel/secondlevel/second1',
@@ -1025,7 +1174,8 @@ export const ROUTES: RouteInfo[] = [
             groupTitle: false,
             badge: '',
             badgeClass: '',
-                submenu: [],
+            role: [''],
+            submenu: [],
           },
           {
             path: '/multilevel/secondlevel/second2',
@@ -1037,7 +1187,8 @@ export const ROUTES: RouteInfo[] = [
             groupTitle: false,
             badge: '',
             badgeClass: '',
-                submenu: [],
+            role: [''],
+            submenu: [],
           },
         ],
       },
@@ -1051,6 +1202,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role: [''],
         submenu: [],
       },
     ],
@@ -1065,6 +1217,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: '',
     badgeClass: '',
+    role: ['All'],
     submenu: [],
   },
 ];

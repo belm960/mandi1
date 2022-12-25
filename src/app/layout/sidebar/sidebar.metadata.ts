@@ -9,5 +9,6 @@ export interface RouteInfo {
   groupTitle: boolean;
   badge: string;
   badgeClass: string;
+  role: string[];
   submenu: RouteInfo[];
 }

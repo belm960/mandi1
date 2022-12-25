@@ -70,7 +70,18 @@ export class SigninComponent implements OnInit {
             localStorage.setItem('STATE', 'true');
             localStorage.setItem('ROLE', "Admin");
             this.router.navigate(['/admin/dashboard/main']);
-            //this.router.navigate(['/admin/patients/edit-patient']);
+
+          }else if (role === "ROLE_MEMBER") {
+
+            localStorage.setItem('STATE', 'true');
+            localStorage.setItem('ROLE', "Member");
+            this.router.navigate(['/pages/homepage']);
+
+          } else if (role === "ROLE_USER") {
+
+            localStorage.setItem('STATE', 'true');
+            localStorage.setItem('ROLE', "User");
+            this.router.navigate(['/pages/homepage']);
 
           }
         },
