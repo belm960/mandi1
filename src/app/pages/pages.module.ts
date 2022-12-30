@@ -43,10 +43,11 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { NgxMaskModule } from 'ngx-mask';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { AddSellerRateComponent } from './add-seller-rate/add-seller-rate.component';
 
 
 @NgModule({
-  declarations: [AddCustomerComponent, EditAdvertComponent, AdvertComponent, AdvertDetailComponent, CommentComponent, GroupComponent, GroupDetailComponent, HomepageComponent, MyAddsDetailComponent, MyAdvertComponent, EditUserComponent],
+  declarations: [AddCustomerComponent, EditAdvertComponent, AdvertComponent, AdvertDetailComponent, CommentComponent, GroupComponent, GroupDetailComponent, HomepageComponent, MyAddsDetailComponent, MyAdvertComponent, EditUserComponent, AddSellerRateComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

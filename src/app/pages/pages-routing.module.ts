@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
+import { AddSellerRateComponent } from './add-seller-rate/add-seller-rate.component';
 import { AdvertDetailComponent } from './advert-detail/advert-detail.component';
 import { AdvertComponent } from './advert/advert.component';
 import { CommentComponent } from './comment/comment.component';
@@ -14,6 +15,7 @@ import { MyAdvertComponent } from './my-advert/my-advert.component';
 
 const routes: Routes = [
   { path: "addCustomer", component: AddCustomerComponent },
+  { path: "addSellerRate", component: AddSellerRateComponent },
   { path: "advert", component: AdvertComponent },
   { path: "advertDetail", component: AdvertDetailComponent },
   { path: "comment", component: CommentComponent },

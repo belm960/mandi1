@@ -1,0 +1,77 @@
+<section class="content">
+    <div class="container-fluid">
+            <div class="card">
+              <div class="header">
+                <h2>Find or Search person by his Id</h2>
+              </div>
+              <div class="body">
+                <form class="register-form m-4" [formGroup]="findMemberForm" (ngSubmit)="onSubmit()">
+                  <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Customer Id</mat-label>
+                        <input matInput formControlName="id" required>
+                        <mat-icon matSuffix>face</mat-icon>
+                        <mat-error *ngIf="findMemberForm.get('id').hasError('required') || findMemberForm.get('id').touched">
+                          Please enter a valid id
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                      <button class="mr-3" [disabled]="!findMemberForm.valid" mat-raised-button color="primary">Search</button>
+                      <button type="button" mat-button>Cancel</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="row clearfix" *ngIf="indicate1">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <div class="card">
+                    <div class="header">
+                      <div class="col-xs-12 col-sm-6">
+                        <h2>
+                          <strong>The</strong> Result</h2>
+                      </div>
+            
+                    </div>
+                    <div class="body">
+                      <div class="row">
+                        <div class="col-md-4" *ngIf="indicate1">
+                            <div class="card border-apply">
+                            <div class="m-b-20">
+                            <div class="contact-grid" *ngIf="!indicate">
+                              <div class="profile-header l-bg-purple-dark">
+                                <div class="user-name">{{user.fname}} {{user.lname}} {{user.gname}}</div>
+                                <div class="name-center">{{user.username}}</div>
+                              </div>
+                              <img src="assets/images/user/usrbig1.jpg" class="user-img" alt="">
+                              <p>
+                                He Used Your Product: {{liked.numSell}} Times
+                              </p>
+                              <div>
+                                <span class="phone">
+                                  <i class="material-icons">phone</i>{{user.phonenum}}</span>
+                              </div>
+                              <div class="profile-userbuttons">
+                                <button mat-flat-button color="primary" (click)="add()">Add More</button>
+                              </div>
+                            </div>
+                            <div class="alert alert-danger" *ngIf="indicate">
+                                Error: {{Errormessage}}
+                            </div>
+                          </div>
+                          </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>  
+    </div>
+    </section>
+    
+    
+    
