@@ -15,6 +15,9 @@ export class TokenStorageService {
   signOut() {
     window.sessionStorage.clear();
   }
+  public getId(){
+    return localStorage.getItem("user-id")
+  }
   public getdType(): string {
     return sessionStorage.getItem(D_KEY);
   }
