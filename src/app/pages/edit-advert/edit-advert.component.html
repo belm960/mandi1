@@ -1,1 +1,168 @@
-<p>edit-advert works!</p>
+<section class="content">
+    <div class="container-fluid">
+      <div class="block-header">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <ul class="breadcrumb breadcrumb-style ">
+              <li class="breadcrumb-item">
+                <h4 class="page-title">Edit Advert</h4>
+              </li>
+              <li class="breadcrumb-item bcrumb-1">
+                <a routerLink="/admin/dashboard/main">
+                  <i class="fas fa-home"></i> Home</a>
+              </li>
+              <li class="breadcrumb-item bcrumb-2">
+                <a href="#" onClick="return false;">Advert</a>
+              </li>
+              <li class="breadcrumb-item active">{{title}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row clearfix">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+          <div class="card">
+            <div class="body">
+              <form class="m-4" [formGroup]="advertForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                      <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Product Owner Id</mat-label>
+                        <input matInput formControlName="ownerId" required>
+                        <mat-icon matSuffix>face</mat-icon>
+                        <mat-error *ngIf="advertForm.get('ownerId').hasError('required')">
+                          Product Owner Id is required
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>Product Name</mat-label>
+                      <input matInput formControlName="name" required>
+                      <mat-icon matSuffix>local_cafe</mat-icon>
+                      <mat-error *ngIf="advertForm.get('name').hasError('required')">
+                        Product name is required
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>Company Name</mat-label>
+                      <input matInput formControlName="companyName" required>
+                      <mat-icon matSuffix>store_mall_directory</mat-icon>
+                      <mat-error *ngIf="advertForm.get('companyName').hasError('required')">
+                        Company Name is required
+                      </mat-error>
+                    </mat-form-field>
+                </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>Photo</mat-label>
+                      <input matInput formControlName="photo" required>
+                      <mat-icon matSuffix>insert_photo</mat-icon>
+                      <mat-error *ngIf="advertForm.get('photo').hasError('required')">
+                        Photo is Required
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>Telegram Link</mat-label>
+                      <input matInput formControlName="teleLink" required>
+                      <mat-icon matSuffix>insert_link</mat-icon>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>Facebook Link</mat-label>
+                      <input matInput formControlName="facebookLink" required>
+                      <mat-icon matSuffix>insert_link</mat-icon>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>Description</mat-label>
+                      <input matInput formControlName="description" required>
+                      <mat-icon matSuffix>dvr</mat-icon>
+                      <mat-error *ngIf="advertForm.get('description').hasError('required')">
+                        Product Description is required
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>Category</mat-label>
+                      <input matInput formControlName="category" required>
+                      <mat-icon matSuffix>inbox</mat-icon>
+                      <mat-error *ngIf="advertForm.get('category').hasError('required')">
+                        Please Choose Category
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Minimum Price</mat-label>
+                        <input matInput type="number" formControlName="minPrice" required class="example-right-align">
+                        <span matPrefix>$&nbsp;</span>
+                        <span matSuffix>.00</span>
+                        <mat-error *ngIf="advertForm.get('minPrice').hasError('required')">
+                          Minimum Price is required
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Usage Limit</mat-label>
+                            <input matInput type="number" formControlName="usageLimit" required placeholder="User usage to get min price" 
+                            class="example-right-align">
+                            <mat-icon matSuffix>loop</mat-icon>
+                            <mat-error *ngIf="advertForm.get('usageLimit').hasError('required')">
+                              Usage Limit is required
+                            </mat-error>
+                          </mat-form-field>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                          <mat-label>Sell Prize</mat-label>
+                          <input matInput formControlName="sellPrize" required>
+                          <mat-icon matSuffix>redeem</mat-icon>
+                          <mat-error *ngIf="advertForm.get('sellPrize').hasError('required')">
+                            Sell Prize is required
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Sell Limit</mat-label>
+                            <input matInput type="number" required formControlName="sellLimit" placeholder="User sell to get his prize" 
+                            class="example-right-align">
+                            <mat-icon matSuffix>play_for_work</mat-icon>
+                            <mat-error *ngIf="advertForm.get('sellLimit').hasError('required')">
+                              Sell Limit is required
+                            </mat-error>
+                          </mat-form-field>
+                    </div>
+                  </div>
+                <div class="row">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                    <button class="mr-3" [disabled]="!advertForm.valid" mat-raised-button color="primary">Submit</button>
+                    <button type="button" mat-button (click)="cancel()">Cancel</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
