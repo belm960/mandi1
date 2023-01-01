@@ -44,10 +44,12 @@ import { NgxMaskModule } from 'ngx-mask';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { AddSellerRateComponent } from './add-seller-rate/add-seller-rate.component';
+import { SellerAdvertComponent } from './seller-advert/seller-advert.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 @NgModule({
-  declarations: [AddCustomerComponent, EditAdvertComponent, AdvertComponent, AdvertDetailComponent, CommentComponent, GroupComponent, GroupDetailComponent, HomepageComponent, MyAddsDetailComponent, MyAdvertComponent, EditUserComponent, AddSellerRateComponent],
+  declarations: [AddCustomerComponent, EditAdvertComponent, AdvertComponent, AdvertDetailComponent, CommentComponent, GroupComponent, GroupDetailComponent, HomepageComponent, MyAddsDetailComponent, MyAdvertComponent, EditUserComponent, AddSellerRateComponent, SellerAdvertComponent, UserProfileComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

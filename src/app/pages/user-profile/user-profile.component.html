@@ -1,0 +1,100 @@
+<section class="content">
+    <div class="container-fluid">
+      <div class="block-header">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <ul class="breadcrumb breadcrumb-style ">
+              <li class="breadcrumb-item">
+                <h4 class="page-title">Profile</h4>
+              </li>
+              <li class="breadcrumb-item bcrumb-1">
+                <a routerLink="/admin/dashboard/main">
+                  <i class="fas fa-home"></i> Home</a>
+              </li>
+              <li class="breadcrumb-item bcrumb-2">
+                <a href="#" onClick="return false;">Extra</a>
+              </li>
+              <li class="breadcrumb-item active">Profile</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Your content goes here  -->
+      <div class="row clearfix">
+        <div class="col-lg-8 col-md-12">
+          <div class="card">
+            <mat-tab-group>
+              <mat-tab>
+                <ng-template mat-tab-label>
+                  <mat-icon class="example-tab-icon mr-2">face</mat-icon>
+                  About Me
+                </ng-template>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="project_widget">
+                    <div class="header">
+                      <h2><strong>About</strong></h2>
+                    </div>
+                    <div class="body">
+                      <div class="row">
+                        <div class="col-md-3 col-6 b-r">
+                          <strong>Full Name</strong>
+                          <br>
+                          <p class="text-muted">{{user.fname}} {{user.lname}} {{user.gname}}</p>
+                        </div>
+                        <div class="col-md-3 col-6 b-r">
+                          <strong>Mobile</strong>
+                          <br>
+                          <p class="text-muted">{{user.phonenum}}</p>
+                        </div>
+                        <div class="col-md-3 col-6 b-r">
+                          <strong>Email</strong>
+                          <br>
+                          <p class="text-muted">{{user.email}}</p>
+                        </div>
+                        <div class="col-md-3 col-6">
+                          <strong>Location</strong>
+                          <br>
+                          <p class="text-muted">{{user.city}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-tab>
+              <mat-tab>
+                <ng-template mat-tab-label>
+                  <mat-icon class="example-tab-icon mr-2">settings</mat-icon>
+                  Settings
+                </ng-template>
+                <div class="header">
+                  <h2>
+                    <strong>Security</strong> Settings</h2>
+                </div>
+                <div class="body">
+                  <form class="m-2" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                    <div class="example-container">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>Username</mat-label>
+                      <input matInput formControlName="username">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>Current Password</mat-label>
+                      <input matInput formControlName="password" type="password">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>New Password</mat-label>
+                      <input matInput formControlName="newPassword" type="password">
+                    </mat-form-field>
+                  </div>
+                  <button type="submit" mat-raised-button color="primary">Save</button>
+                </form>
+                <button mat-raised-button color="warn" (click)="edit(user.id)">Edit Account</button>
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

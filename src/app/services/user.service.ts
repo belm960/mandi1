@@ -35,10 +35,19 @@ export class UserService {
         const url = `${apiUrl}/User/${id}`;
         return this.http.put<User>(url, user);    
     }
+    updateSecurity(user: any): Observable<User> {
+        const id=user.id;
+        const url = `${apiUrl}/User/Security/${id}`;
+        return this.http.put<User>(url, user);    
+    }
     get(username: string): Observable<User> {
         const url = `${apiUrl}/User/${username}`;
         return this.http.get<User>(url);
     }
+    getUserId(id: string): Observable<User> {
+        const url = `${apiUrl}/User/${id}`;
+        return this.http.get<User>(url);
+      }
 
     getRole() {
         return localStorage.getItem('ROLE');

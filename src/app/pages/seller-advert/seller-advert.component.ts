@@ -1,30 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AddInfo } from 'src/app/models/addInfo';
+import { Selled } from 'src/app/models/selled';
 import { AddGroupService } from 'src/app/services/addgroup.service';
 
 @Component({
-  selector: 'app-advert',
-  templateUrl: './advert.component.html',
-  styleUrls: ['./advert.component.sass']
+  selector: 'app-seller-advert',
+  templateUrl: './seller-advert.component.html',
+  styleUrls: ['./seller-advert.component.sass']
 })
-export class AdvertComponent implements OnInit {
+export class SellerAdvertComponent implements OnInit {
 
   title: string;
   page: any;
-  addInfo: AddInfo;
   private paramSub: Subscription;
   private querySub: Subscription;
- 
-
-
+  selled: Selled;
   constructor(private addgroupService: AddGroupService,
-              private route: ActivatedRoute,
-              private rout: Router) {
+              private route: ActivatedRoute) {
   }
-
-
   ngOnInit() {
     this.querySub = this.route.queryParams.subscribe(() => {
       this.update();
@@ -32,35 +26,28 @@ export class AdvertComponent implements OnInit {
     this.paramSub = this.route.params.subscribe(() => {
       this.update();
     });
-    
-
   }
-
   ngOnDestroy(): void {
     this.querySub.unsubscribe();
     this.paramSub.unsubscribe();
   }
-
   update() {
     if (this.route.snapshot.queryParamMap.get('page')) {
-      const currentPage = +this.route.snapshot.queryParamMap.get('page');
       const size = +this.route.snapshot.queryParamMap.get('size');
-      this.getProds(currentPage, size);
+      this.getProds();
     } else {
       this.getProds();
     }
   }
-  getProds(page: number = 5, size: number = 2) {
+  getProds() {
     if (this.route.snapshot.url.length == 1) {
-      this.addgroupService.getAllInPageofAdd(+page, +size)
+      this.addgroupService.getSelledProducts()
         .subscribe(page => {
           this.page = page;
-          this.title = 'Our Best Adds';
+          console.log(page);
+          this.title = 'Your Selled Products';
         });
     }
   }
 
-  detail(id){
-    this.rout.navigateByUrl(`/advertDetail/${id}`);
-  }
 }
