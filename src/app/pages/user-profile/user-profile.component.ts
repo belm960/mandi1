@@ -55,7 +55,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   edit(id){
-    this.router.navigateByUrl('/editUser/'+id);
+    this.router.navigateByUrl('/pages/editUser');
   }
 
 }

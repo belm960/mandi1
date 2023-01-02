@@ -46,6 +46,16 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { AddSellerRateComponent } from './add-seller-rate/add-seller-rate.component';
 import { SellerAdvertComponent } from './seller-advert/seller-advert.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatProgressButtonsModule } from 'mat-progress-buttons';
 
 
 @NgModule({
@@ -83,6 +93,16 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     NgxMaskModule,
     ColorPickerModule,
     MaterialFileInputModule,
+    MatBadgeModule,
+    MatChipsModule,
+    MatBottomSheetModule,
+    MatSnackBarModule,
+    MatExpansionModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    MatTabsModule,
+    NgbModule,
+    MatProgressButtonsModule,
   ]
 })
 export class PagesModule { }

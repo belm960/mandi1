@@ -1,1 +1,74 @@
-<p>advert-detail works!</p>
+<section class="content">
+    <div class="container-fluid">
+      <div class="block-header">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <ul class="breadcrumb breadcrumb-style ">
+              <li class="breadcrumb-item">
+                <h4 class="page-title">{{addInfo.name}}</h4>
+              </li>
+              <li class="breadcrumb-item bcrumb-1">
+                <a routerLink="/admin/dashboard/main">
+                  <i class="fas fa-home"></i> Home</a>
+              </li>
+              <li class="breadcrumb-item bcrumb-2">
+                <a href="#" onClick="return false;">Products</a>
+              </li>
+              <li class="breadcrumb-item active">Detail</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Your content goes here  -->
+      <div class="row clearfix">
+        <div class="col-lg-4 col-md-12">
+          <div class="card">
+            <div class="m-b-20">
+              <div class="contact-grid">
+                <div class="profile-header bg-dark">
+                  <div class="user-name">John Smith</div>
+                  <div class="name-center">Software Engineer</div>
+                </div>
+                <img src="assets/images/user/usrbig3.jpg" class="user-img" alt="">
+                <p>
+                  456, Estern evenue, Courtage area,
+                  <br />New York
+                </p>
+                <div>
+                  <span class="phone">
+                    <i class="material-icons">phone</i>264-625-2583</span>
+                </div>
+                <div class="row">
+                  <div class="col-4">
+                    <h5>564</h5>
+                    <small>Following</small>
+                  </div>
+                  <div class="col-4">
+                    <h5>18k</h5>
+                    <small>Followers</small>
+                  </div>
+                  <div class="col-4">
+                    <h5>565</h5>
+                    <small>Post</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <mat-tab-group mat-align-tabs="start">
+              <mat-tab label="About">
+                <div class="p-4">
+                  <hr>
+                  <p class="text-default">
+                    {{addInfo.description}}
+                  </p>
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
