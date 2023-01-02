@@ -22,39 +22,60 @@
       <!-- Your content goes here  -->
       <div class="row clearfix">
         <div class="col-lg-4 col-md-12">
-          <div class="card">
-            <div class="m-b-20">
-              <div class="contact-grid">
-                <div class="profile-header bg-dark">
-                  <div class="user-name">John Smith</div>
-                  <div class="name-center">Software Engineer</div>
-                </div>
-                <img src="assets/images/user/usrbig3.jpg" class="user-img" alt="">
-                <p>
-                  456, Estern evenue, Courtage area,
-                  <br />New York
-                </p>
-                <div>
-                  <span class="phone">
-                    <i class="material-icons">phone</i>264-625-2583</span>
-                </div>
-                <div class="row">
-                  <div class="col-4">
-                    <h5>564</h5>
-                    <small>Following</small>
-                  </div>
-                  <div class="col-4">
-                    <h5>18k</h5>
-                    <small>Followers</small>
-                  </div>
-                  <div class="col-4">
-                    <h5>565</h5>
-                    <small>Post</small>
-                  </div>
+              <div class="card">
+                <div class="contact-grid profile-image">
+                  <img src="assets/images/user/usrbig4.jpg" alt="">
                 </div>
               </div>
-            </div>
-          </div>
+              <div class="card">
+                <div class="header bg-cyan">
+                  <h2>
+                    {{addInfo.name}}
+                    <small>{{addInfo.companyName}}</small>
+                  </h2>
+                  <ul class="header-dropdown m-r-10">
+                    <li>
+                      <a href="#" onClick="return false;">
+                        <i class="material-icons">edit</i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="body">
+                  Category: {{addInfo.category}}
+                  <hr>
+                <div  class="alert alert-success" disabled *ngIf="user&& (!numUsageFull()&&!sign)">
+                        Used {{numUsage}} for Customer Price!
+                </div>
+                <div class="alert alert-warning" disabled *ngIf="user && (!numUsageFull() &&sign)">
+                  you Haven't used this product yet!
+                </div>
+                <div  class="alert alert-danger" disabled *ngIf="user&& numUsageFull()">
+                  The Minimum Price: {{minPrice}}
+                </div>
+                  <hr>
+                  <a  (click)="likeButtonClick(addInfo?.numOfLike,addInfo?.numOfDislike,addInfo?.id)" 
+                  *ngIf="chooseclassl">
+                    <i matBadge="{{numOfLike}}" class="material-icons m-r-10 fa-2x ">thumb_up</i>
+                  </a>
+                  <a  (click)="likeButtonClick(addInfo?.numOfLike,addInfo?.numOfDislike,addInfo?.id)"
+                  *ngIf="!chooseclassl" >
+                    <i matBadge="{{numOfLike}}" class="material-icons m-r-10 fa-2x col-green">thumb_up</i>
+                  </a>
+                  <a  (click)="dislikeButtonClick(addInfo?.numOfLike,addInfo?.numOfDislike,addInfo?.id)" *ngIf="!chooseclassd">
+                    <i matBadge="{{numOfDislike}}" class="material-icons m-r-100 fa-2x col-red">thumb_down</i>
+                  </a>
+                  <a  (click)="dislikeButtonClick(addInfo?.numOfLike,addInfo?.numOfDislike,addInfo?.id)" *ngIf="chooseclassd">
+                    <i matBadge="{{numOfDislike}}" class="material-icons m-r-100 fa-2x col-yellow">thumb_down</i>
+                  </a>
+                  <a href="{{addInfo?.facebookLink}}">
+                    <i class="fab fa-facebook fa-2x col-cyan m-r-10"></i>
+                  </a>
+                  <a href="{{addInfo?.teleLink}}">
+                    <i class="fab fa-telegram fa-2x col-grey m-r-30"></i>
+                  </a>
+                </div>
+              </div>
           <div class="card">
             <mat-tab-group mat-align-tabs="start">
               <mat-tab label="About">
@@ -67,6 +88,47 @@
               </mat-tab>
             </mat-tab-group>
           </div>
+            <div class="card">
+              <div class="header">
+                <h2>Comments</h2>
+              </div>
+              <div class="body">
+                <div *ngIf="(!visitor) && user">
+                <form class="register-form m-2" [formGroup]="commentForm" (ngSubmit)="postComment()" >
+                  <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Comment</mat-label>
+                        <input matInput formControlName="comment" required>
+                        <mat-icon matSuffix>face</mat-icon>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                      <button class="mr-3" [disabled]="!commentForm.valid" mat-raised-button color="primary">Comment</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+                <hr>
+                <div class="assign-style" style="position: relative; max-height: 400px;">
+                  <ul class="feedBody">
+                    <li class="diactive-feed" *ngFor="let pComment of pComment; let i=index;">
+                      <div class="feed-user-img">
+                        <img src="assets/images/user/user3.jpg" class="img-radius " alt="User-Profile-Image">
+                      </div>
+                      <h6>
+                        <span class="feedLblStyle lblCommentStyle">comment</span>{{pComment.username}}
+                      </h6>
+                      <p class="m-b-15 m-t-15">
+                        {{pComment.comment}}
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
     </div>

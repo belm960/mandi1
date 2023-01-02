@@ -26,9 +26,9 @@ export class AdvertDetailComponent implements OnInit {
     Admin:"Admin",
     Member: "Member"
     }
-  numOfLike: number;
-  numOfDislike: number;
-  numUsage: number;
+  numOfLike: number =0;
+  numOfDislike: number=0;
+  numUsage: number=0;
   minPrice: string;
   chooseclassl:boolean = true;
   chooseclassd:boolean = true;
@@ -105,7 +105,7 @@ export class AdvertDetailComponent implements OnInit {
     )
   }
   postComment(){
-    if(this.visitor && !this.user){
+    if(this.visitor && !this.user || !this.user){
       this.message = "Please sign in or create Acount first";
       alert(this.message);
     }else{
@@ -148,7 +148,7 @@ export class AdvertDetailComponent implements OnInit {
   }
 
   likeButtonClick(numOfLike: number,numOfDislike: number,id) {
-    if(this.visitor && !this.user){
+    if(this.visitor && !this.user || !this.user){
       this.message = "Please sign in or create Acount first";
       alert(this.message);
     }else{
@@ -185,7 +185,7 @@ export class AdvertDetailComponent implements OnInit {
   }
 }
   dislikeButtonClick(numOfDislike: number,numOfLike: number, id) {
-    if(this.visitor && !this.user){
+    if(this.visitor && !this.user || !this.user){
       this.message = "Please sign in or create Acount first";
       alert(this.message);
     }else{
