@@ -27,11 +27,13 @@ export class AddSellerRateComponent implements OnInit {
     indicate1=false;
     numberOfSell=0;
     findMemberForm: FormGroup;
+    
     constructor(private addgroupService: AddGroupService,
                 private router: Router,
                 private usr: UserService,
                 private http: HttpClient, 
-                private fb : FormBuilder) {
+                private fb : FormBuilder,
+                private route: ActivatedRoute) {
 
                   this.findMemberForm = this.fb.group({id: [''],});
     }
@@ -45,7 +47,8 @@ export class AddSellerRateComponent implements OnInit {
     }
 
     onSubmit() {
-      this.addgroupService.getLikeDislike(this.findMemberForm.value.id,this.addId).subscribe(
+      const id = this.route.snapshot.paramMap.get('id');
+      this.addgroupService.getLikeDislike(this.findMemberForm.value.id,id).subscribe(
           (data)=>{
               this.liked=data;
               this.numberOfSell=this.liked.numSell;
@@ -70,12 +73,11 @@ export class AddSellerRateComponent implements OnInit {
           }
       );
   }
-
-
     add() {
+        const id = this.route.snapshot.paramMap.get('id');
         this.numberOfSell = this.numberOfSell+1;
         console.log(this.numberOfSell);
-        const url = `${apiUrl}/NumSell/${this.user.id}/${this.addId}`;
+        const url = `${apiUrl}/NumSell/${this.user.id}/${id}`;
         const urll = `${apiUrl}/NumSell/`;
         return this.http.put(url,{
             "numSell": this.numberOfSell,
@@ -83,19 +85,19 @@ export class AddSellerRateComponent implements OnInit {
             (data) => {
                 console.log(data);
                 Swal.fire('Successfull', 'you have added one customer to the service of usage','success');
-                this.router.navigateByUrl("/advert");
+                this.router.navigateByUrl("/pages/advert");
             },
             (error:HttpErrorResponse)=>{
                 if(error.status==404){
                     return this.http.post(urll,{
                         "members_id":this.user.id,
-                        "posts_id":this.addId,
+                        "posts_id":id,
                         "numSell": 1,
                     }).subscribe(
                         data => {
                             console.log(data);
                             Swal.fire('Successfull', 'you have added one customer to the service of usage','success');
-                            this.router.navigateByUrl("/advert");
+                            this.router.navigateByUrl("/pages/advert");
                             
                         },error=>{
                           this.numberOfSell = this.numberOfSell-1;
@@ -106,10 +108,7 @@ export class AddSellerRateComponent implements OnInit {
                   this.numberOfSell = this.numberOfSell-1;
                   Swal.fire('Ops', 'There is an error please try again','error');
                 }
-            }
-
-            
-        );
-        
+            }            
+        );        
     }
 }

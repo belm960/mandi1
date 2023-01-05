@@ -96,9 +96,6 @@ export class SidebarComponent implements OnInit {
         (x) => x.role.indexOf(userRole) !== -1 || x.role.indexOf('All') !== -1 || x.role.indexOf('') !== -1
       );
     }
-    this.sidebarItems = ROUTES.filter(
-      (x) => x.role.indexOf('User') !== -1 || x.role.indexOf('Admin') !== -1 || x.role.indexOf('All') !== -1 || x.role.indexOf('') !== -1
-    );
     this.initLeftSidebar();
     this.bodyTag = this.document.body;
   }

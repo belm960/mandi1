@@ -40,6 +40,8 @@ import { MatInputModule } from "@angular/material/input";
 import { HttpClientModule } from "@angular/common/http";
 import { ClickOutsideModule } from "ng-click-outside";
 import { httpInterceptorProviders } from './shared/security/auth-interceptor';
+import { NgxWheelModule } from 'ngx-wheel';
+
 
 
 
@@ -80,6 +82,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NgxSpinnerModule,
     ClickOutsideModule,
     NgxMaskModule.forRoot(),
+    
   ],
   providers: [httpInterceptorProviders,
     { provide: LocationStrategy, useClass: HashLocationStrategy },

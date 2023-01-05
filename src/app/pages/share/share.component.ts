@@ -1,30 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AddInfo } from 'src/app/models/addInfo';
+import { Shared } from 'src/app/models/shared';
 import { AddGroupService } from 'src/app/services/addgroup.service';
-import { TokenStorageService } from 'src/app/shared/security/token-storage.service';
 
 @Component({
-  selector: 'app-my-advert',
-  templateUrl: './my-advert.component.html',
-  styleUrls: ['./my-advert.component.sass']
+  selector: 'app-seller-advert',
+  templateUrl: './share.component.html',
+  styleUrls: ['./share.component.sass']
 })
-export class MyAdvertComponent implements OnInit {
+export class ShareComponent implements OnInit {
 
   title: string;
   page: any;
-  addInfo: AddInfo;
-  id: any;
   private paramSub: Subscription;
   private querySub: Subscription;
- 
+  shared: Shared;
   constructor(private addgroupService: AddGroupService,
-              private route: ActivatedRoute,
-              token: TokenStorageService,
-              private router: Router) {
-                this.id = token.getId();
-              }
+              private route: ActivatedRoute) {
+  }
   ngOnInit() {
     this.querySub = this.route.queryParams.subscribe(() => {
       this.update();
@@ -33,15 +27,12 @@ export class MyAdvertComponent implements OnInit {
       this.update();
     });
   }
-
   ngOnDestroy(): void {
     this.querySub.unsubscribe();
     this.paramSub.unsubscribe();
   }
-
   update() {
     if (this.route.snapshot.queryParamMap.get('page')) {
-      const currentPage = +this.route.snapshot.queryParamMap.get('page');
       const size = +this.route.snapshot.queryParamMap.get('size');
       this.getProds();
     } else {
@@ -50,15 +41,13 @@ export class MyAdvertComponent implements OnInit {
   }
   getProds() {
     if (this.route.snapshot.url.length == 1) {
-      this.addgroupService.getAllInPageofMyAdd(this.id)
+      this.addgroupService.getSharedProducts()
         .subscribe(page => {
           this.page = page;
-          this.title = 'Your Best Adds';
+          console.log(page);
+          this.title = 'Your Shared Products';
         });
     }
-  }
-  detail(id: string){
-    this.router.navigateByUrl('/pages/myAddsDetail/'+id);
   }
 
 }

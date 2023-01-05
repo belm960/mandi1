@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AddInfo } from 'src/app/models/addInfo';
 import { LikeDislike } from 'src/app/models/likeDislike';
 import { AddGroupService } from 'src/app/services/addgroup.service';
@@ -42,15 +42,17 @@ export class AdvertDetailComponent implements OnInit {
       private addgroupService: AddGroupService,
       private route: ActivatedRoute,
       private token: TokenStorageService,
-      private fb: FormBuilder
+      private fb: FormBuilder,
+      private router: Router
   ) {
     this.commentForm = this.fb.group({
-      comment: ['', [Validators.required, Validators.pattern('[a-zA-Z]+')]],
+      comment: ['', [Validators.required]],
     });
     console.log(this.route.snapshot.paramMap.get('user'));
     this.userid=this.route.snapshot.paramMap.get('user');
     if(this.userid){
       this.visitor=true;
+      this.getshare();
     }
   }
 
@@ -65,6 +67,10 @@ export class AdvertDetailComponent implements OnInit {
     this.role = localStorage.getItem('ROLE');
   }
 
+  routeToEdit(id: any){
+    this.router.navigate(['/pages/editAdvert/' + id])
+  }
+
   numUsageFull(): boolean{
     if(this.likeDislike.numUsage>this.addInfo.usageLimit){
       return true;
@@ -74,7 +80,6 @@ export class AdvertDetailComponent implements OnInit {
     }
   }
   getProduct(): void {
-    console.log(this.route.snapshot.queryParamMap.get('page'));
     const id = this.route.snapshot.paramMap.get('id');
     this.addgroupService.getDetails(id).subscribe(
         advert => {
@@ -109,9 +114,9 @@ export class AdvertDetailComponent implements OnInit {
       this.message = "Please sign in or create Acount first";
       alert(this.message);
     }else{
-    this.mem= this.token.getId();
+    this.userid= this.token.getId();
     const id = this.route.snapshot.paramMap.get('id');
-    this.addgroupService.PostComment(this.commentForm.value.comment,this.mem,id).subscribe(
+    this.addgroupService.PostComment(this.commentForm.value.comment,this.userid,id).subscribe(
       data=>{
         console.log(data);
         this.getPostComment();
@@ -119,10 +124,26 @@ export class AdvertDetailComponent implements OnInit {
     );
   }
 }
+
+getshare(): void {
+  const id = this.route.snapshot.paramMap.get('id');
+  this.addgroupService.getshare(this.userid,id).subscribe(
+      like => {
+        var share = like.numOfShare;
+        this.addgroupService.updateNumberOfShare(this.userid, id,share++);
+      },
+      error=>{
+        if (error.error.status==404){
+          this.addgroupService.updateNumberOfShare(this.userid, id,1);
+        }else{
+          this.addgroupService.updateNumberOfShare(this.userid, id,1);
+        }
+      })}
+
   getLikeDislike(): void {
-    this.mem= this.token.getId();
+    this.userid= this.token.getId();
     const id = this.route.snapshot.paramMap.get('id');
-    this.addgroupService.getLikeDislike(this.mem,id).subscribe(
+    this.addgroupService.getLikeDislike(this.userid,id).subscribe(
         like => {
           this.likeDislike = like;
           console.log(this.likeDislike);
@@ -130,7 +151,7 @@ export class AdvertDetailComponent implements OnInit {
           this.dislikes= this.likeDislike.dislikes;
           this.numUsage=this.likeDislike.numUsage;
           if(this.numUsage<1){
-            this.sign = true; 
+            this.sign = true;
           }
           if(this.likes=="false"){
             this.chooseclassl=false;
@@ -148,11 +169,11 @@ export class AdvertDetailComponent implements OnInit {
   }
 
   likeButtonClick(numOfLike: number,numOfDislike: number,id) {
-    if(this.visitor && !this.user || !this.user){
+    if(this.visitor || !this.user){
       this.message = "Please sign in or create Acount first";
       alert(this.message);
     }else{
-    this.mem= this.token.getId();
+    this.userid= this.token.getId();
     const id1 = this.route.snapshot.paramMap.get('id');
     if (this.chooseclassl === true && this.chooseclassd === true) {
       this.numOfLike++;
@@ -161,7 +182,7 @@ export class AdvertDetailComponent implements OnInit {
         (data)=>{console.log(data);}
       );
       this.chooseclassl = false;
-      this.addgroupService.updateaddLikeDislike(this.mem,id1,"false","true");
+      this.addgroupService.updateaddLikeDislike(this.userid,id1,"false","true");
     } else if (this.chooseclassl === true && this.chooseclassd === false) {
       this.numOfLike++;
       numOfLike = this.numOfLike;
@@ -172,7 +193,7 @@ export class AdvertDetailComponent implements OnInit {
         (data)=>{console.log(data);}
       );
       this.chooseclassd = true;
-      this.addgroupService.updateaddLikeDislike(this.mem,id1,"false","true");
+      this.addgroupService.updateaddLikeDislike(this.userid,id1,"false","true");
     } else if (this.chooseclassl === false && this.chooseclassd === true) {
       this.numOfLike--;
       numOfLike = this.numOfLike;
@@ -180,16 +201,16 @@ export class AdvertDetailComponent implements OnInit {
         (data)=>{console.log(data);}
       );
       this.chooseclassl = true;
-      this.addgroupService.updateaddLikeDislike(this.mem,id1,"true","true");
+      this.addgroupService.updateaddLikeDislike(this.userid,id1,"true","true");
     }
   }
 }
   dislikeButtonClick(numOfDislike: number,numOfLike: number, id) {
-    if(this.visitor && !this.user || !this.user){
+    if(this.visitor || !this.user){
       this.message = "Please sign in or create Acount first";
       alert(this.message);
     }else{
-    this.mem= this.token.getId();
+    this.userid= this.token.getId();
     const id1 = this.route.snapshot.paramMap.get('id');
     if (this.chooseclassd === true && this.chooseclassl === true) {
       this.numOfDislike++;
@@ -198,7 +219,7 @@ export class AdvertDetailComponent implements OnInit {
         (data)=>{console.log(data);}
       );
       this.chooseclassd = false;
-      this.addgroupService.updateaddLikeDislike(this.mem,id1,"true","false");
+      this.addgroupService.updateaddLikeDislike(this.userid,id1,"true","false");
     } else if (this.chooseclassd === true && this.chooseclassl === false) {
       this.numOfDislike++;
       numOfDislike = this.numOfDislike;
@@ -209,7 +230,7 @@ export class AdvertDetailComponent implements OnInit {
       );
       this.chooseclassd = false;
       this.chooseclassl = true;
-      this.addgroupService.updateaddLikeDislike(this.mem,id1,"true","false");
+      this.addgroupService.updateaddLikeDislike(this.userid,id1,"true","false");
     } else if (this.chooseclassd === false && this.chooseclassl === true) {
       this.numOfDislike--;
       numOfDislike = this.numOfDislike;
@@ -218,7 +239,7 @@ export class AdvertDetailComponent implements OnInit {
       );
 
       this.chooseclassd = true;
-      this.addgroupService.updateaddLikeDislike(this.mem,id1,"true","true");
+      this.addgroupService.updateaddLikeDislike(this.userid,id1,"true","true");
     }
   }
 }

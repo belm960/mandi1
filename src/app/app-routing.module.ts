@@ -5,12 +5,15 @@ import { Role } from "./shared/security/role";
 import { Page404Component } from "./authentication/page404/page404.component";
 import { AuthLayoutComponent } from "./layout/app-layout/auth-layout/auth-layout.component";
 import { MainLayoutComponent } from "./layout/app-layout/main-layout/main-layout.component";
+import { SigninComponent } from "./authentication/signin/signin.component";
 const routes: Routes = [
-  {
+  { path: "",
+    component: SigninComponent},
+    {
     path: "",
     component: MainLayoutComponent,
     children: [
-      { path: "", redirectTo: "/admin/dashboard/main", pathMatch: "full" },
+      { path: "", redirectTo: "/pages/homepage", pathMatch: "full" },
       {
         path: "admin",
         loadChildren: () =>

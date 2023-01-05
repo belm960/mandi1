@@ -29,16 +29,17 @@ export class AddCustomerComponent implements OnInit {
     constructor(private addgroupService: AddGroupService,
                 private router: Router,
                 private usr: UserService,
-                private http: HttpClient, private fb : FormBuilder) {
+                private http: HttpClient, 
+                private fb : FormBuilder,
+                private route: ActivatedRoute) {
                   this.findMemberForm = this.fb.group({id: [''],});
     }
-    addId: string;
     isEdit = false;
     ngOnInit() {
-        this.addId = window.localStorage.getItem('keyp')
     }
     onSubmit() {
-        this.addgroupService.getLikeDislike(this.findMemberForm.value.id,this.addId).subscribe(
+        const id = this.route.snapshot.paramMap.get('id');
+        this.addgroupService.getLikeDislike(this.findMemberForm.value.id,id).subscribe(
             (data)=>{
                 this.liked=data;
                 this.numberOfUsage=this.liked.numUsage;
@@ -64,9 +65,10 @@ export class AddCustomerComponent implements OnInit {
         );
     }
     add() {
+        const id = this.route.snapshot.paramMap.get('id');
         this.numberOfUsage = this.numberOfUsage+1;
         console.log(this.numberOfUsage);
-        const url = `${apiUrl}/NumOfUsage/${this.user.id}/${this.addId}`;
+        const url = `${apiUrl}/NumOfUsage/${this.user.id}/${id}`;
         const urll = `${apiUrl}/NumOfUsage/`;
         return this.http.put(url,{
             "numUsage": this.numberOfUsage,
@@ -74,20 +76,20 @@ export class AddCustomerComponent implements OnInit {
             (data) => {
                 console.log(data);
                 Swal.fire('Successfull', 'you have added one customer to the service of usage');
-                this.router.navigateByUrl("/advert");
+                this.router.navigateByUrl("/pages/advert");
             },
             (error:HttpErrorResponse)=>{
               this.numberOfUsage = this.numberOfUsage-1;
                 if(error.status==404){
                     return this.http.post(urll,{
                         "members_id":this.user.id,
-                        "posts_id":this.addId,
+                        "posts_id":id,
                         "numUsage": 1,
                     }).subscribe(
                         data => {
                             console.log(data);
                             Swal.fire('Successfull', 'you have added one customer to the service of usage','success');
-                            this.router.navigateByUrl("/advert");
+                            this.router.navigateByUrl("/pages/advert");
                             
                         },
                         ()=>{

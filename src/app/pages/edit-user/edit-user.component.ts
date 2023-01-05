@@ -22,16 +22,15 @@ export class EditUserComponent implements OnInit {
     private router: Router,private http: HttpClient, private fb: FormBuilder) {
         
       this.userForm = this.fb.group({
-          email:[this.user.email || ''],
-          username: [this.user.username || ''],
-          fname: [this.user.fname || ''],
-          lname: [this.user.lname || ''],
-          gname: [this.user.gname || ''],
-          dob: [this.user.dob || ''],
-          phonenum: [this.user.phonenum || ''],
-          city: [this.user.city || '']
+          email:[this.user?.email],
+          username: [this.user?.username],
+          fname: [this.user?.fname],
+          lname: [this.user?.lname],
+          gname: [this.user?.gname],
+          dob: [this.user?.dob],
+          phonenum: [this.user?.phonenum],
+          city: [this.user?.city]
         })
-
   }
 
   ngOnInit() {

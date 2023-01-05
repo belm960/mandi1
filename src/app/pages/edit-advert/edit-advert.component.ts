@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AddInfo } from 'src/app/models/addInfo';
 import { AddGroupService } from 'src/app/services/addgroup.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-advert',
@@ -43,21 +44,16 @@ export class EditAdvertComponent implements OnInit {
     ngOnInit() {
         this.addId = this.route.snapshot.paramMap.get('id');
         if(this.addId){
-            this.title="Edit";
+            this.title="Edit Advert";
         }
-        else{this.title="Add"}
-        
-        if (this.addId) {
-            this.isEdit = true;
-            this.addgroupService.getDetails(this.addId).subscribe(advert => this.advert = advert);
-        }
-        console.log(this.addId);
+        else{this.title="Add Advert"}
 
     }
 
     update() {
         this.addgroupService.updateadd(this.advert).subscribe(advert => {
-                this.router.navigate(['/add']);
+                Swal.fire('Successfull','you have updated advert info','success');
+                this.router.navigate(['/pages/advert']);
             },
             err => {
             });
@@ -73,13 +69,14 @@ export class EditAdvertComponent implements OnInit {
     }
 
     add() {
-        this.addgroupService.createadd(this.advert).subscribe(() => {
-                this.router.navigate(['/advert']);
+        this.addgroupService.createadd(this.advertForm.value).subscribe(() => {
+                Swal.fire('Successfully','you have added the product','success');
+                this.router.navigate(['/pages/advert']);
             });
     }
 
     cancel(){
-      this.router.navigate(['/advert']);
+      this.router.navigate(['/pages/advert']);
     }
 
 }

@@ -35,7 +35,7 @@
                   </h2>
                   <ul class="header-dropdown m-r-10">
                     <li>
-                      <a href="#" onClick="return false;">
+                      <a (click)="routeToEdit(addInfo.id)">
                         <i class="material-icons">edit</i>
                       </a>
                     </li>
@@ -54,7 +54,7 @@
                   The Minimum Price: {{minPrice}}
                 </div>
                   <hr>
-                  <a  (click)="likeButtonClick(addInfo?.numOfLike,addInfo?.numOfDislike,addInfo?.id)" 
+                    <a  (click)="likeButtonClick(addInfo?.numOfLike,addInfo?.numOfDislike,addInfo?.id)" 
                   *ngIf="chooseclassl">
                     <i matBadge="{{numOfLike}}" class="material-icons m-r-10 fa-2x ">thumb_up</i>
                   </a>
@@ -72,15 +72,15 @@
                     <i class="fab fa-facebook fa-2x col-cyan m-r-10"></i>
                   </a>
                   <a href="{{addInfo?.teleLink}}">
-                    <i class="fab fa-telegram fa-2x col-grey m-r-30"></i>
+                    <i class="fab fa-telegram fa-2x col-grey"></i>
                   </a>
+                  
                 </div>
               </div>
           <div class="card">
             <mat-tab-group mat-align-tabs="start">
               <mat-tab label="About">
                 <div class="p-4">
-                  <hr>
                   <p class="text-default">
                     {{addInfo.description}}
                   </p>
@@ -119,7 +119,7 @@
                         <img src="assets/images/user/user3.jpg" class="img-radius " alt="User-Profile-Image">
                       </div>
                       <h6>
-                        <span class="feedLblStyle lblCommentStyle">comment</span>{{pComment.username}}
+                        <span class="feedLblStyle lblCommentStyle">comment</span> {{pComment.username}}
                       </h6>
                       <p class="m-b-15 m-t-15">
                         {{pComment.comment}}

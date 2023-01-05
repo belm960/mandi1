@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AddInfo } from 'src/app/models/addInfo';
 import { AddGroupService } from 'src/app/services/addgroup.service';
+import { TokenStorageService } from 'src/app/shared/security/token-storage.service';
+import { SimpleDialogComponent } from './simpleDialog.component';
 
 @Component({
   selector: 'app-advert',
@@ -16,12 +19,16 @@ export class AdvertComponent implements OnInit {
   addInfo: AddInfo;
   private paramSub: Subscription;
   private querySub: Subscription;
+  simpleDialog: MatDialogRef<SimpleDialogComponent>;
+
  
 
 
   constructor(private addgroupService: AddGroupService,
               private route: ActivatedRoute,
-              private rout: Router) {
+              private rout: Router,
+              private dialogModel: MatDialog,
+              private token: TokenStorageService) {
   }
 
 
@@ -61,6 +68,10 @@ export class AdvertComponent implements OnInit {
   }
 
   detail(id){
-    this.rout.navigateByUrl(`/advertDetail/${id}`);
+    this.rout.navigateByUrl(`/pages/advertDetail/${id}`);
+  }
+  dialog(id) {
+    localStorage.setItem('shareLink','/pages/advertDetail/'+id+'/share/'+this.token.getId())
+    this.simpleDialog = this.dialogModel.open(SimpleDialogComponent);
   }
 }

@@ -1,1 +1,79 @@
-<p>my-adds-detail works!</p>
+<section class="content">
+    <div class="container-fluid">
+      <div class="block-header">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <ul class="breadcrumb breadcrumb-style ">
+              <li class="breadcrumb-item">
+                <h4 class="page-title">{{addInfo.name}}</h4>
+              </li>
+              <li class="breadcrumb-item bcrumb-1">
+                <a routerLink="/admin/dashboard/main">
+                  <i class="fas fa-home"></i> Home</a>
+              </li>
+              <li class="breadcrumb-item bcrumb-2">
+                <a href="#" onClick="return false;">Products</a>
+              </li>
+              <li class="breadcrumb-item active">Detail</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Your content goes here  -->
+      <div class="row clearfix">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <mat-card>
+                  <mat-card-header>
+                    <mat-card-title>{{addInfo.name}}</mat-card-title>
+                    <mat-card-subtitle>{{addInfo.companyName}}</mat-card-subtitle>
+                  </mat-card-header>
+                  <img mat-card-image src="assets/images/image-gallery/7.jpg">
+                  <mat-card-content>
+                    Category: {{addInfo.category}}<hr>
+                    <p>{{addInfo.description}}</p>
+                  </mat-card-content>
+                  <mat-divider></mat-divider>
+                  <mat-card-actions>
+                    <div fxLayout="row">
+                      <button mat-button *ngIf="user && (role==roles.Admin)||(role==roles.Member)" (click)="click(1, addInfo.id)">
+                        <mat-icon class="col-blue">edit</mat-icon>
+                      </button>
+                      <span fxFlex></span>
+                      <button mat-button *ngIf="user && (role==roles.Member) " (click)="click(2,addInfo.id)">
+                        Add Customer
+                      </button>
+                      <button mat-button *ngIf="user && (role==roles.Member) " (click)="click(3,addInfo.id)">
+                        Add Seller
+                      </button>
+                    </div>
+                  </mat-card-actions>
+                </mat-card>
+              </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="card">
+              <div class="header">
+                <h2>Comments</h2>
+              </div>
+              <div class="body">
+                <div class="assign-style" style="position: relative; max-height: 400px;">
+                  <ul class="feedBody">
+                    <li class="diactive-feed" *ngFor="let pComment of pComment; let i=index;">
+                      <div class="feed-user-img">
+                        <img src="assets/images/user/user3.jpg" class="img-radius " alt="User-Profile-Image">
+                      </div>
+                      <h6>
+                        <span class="feedLblStyle lblCommentStyle">comment</span> {{pComment.username}}
+                      </h6>
+                      <p class="m-b-15 m-t-15">
+                        {{pComment.comment}}
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

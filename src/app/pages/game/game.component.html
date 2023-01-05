@@ -1,0 +1,63 @@
+<section class="content">
+    <div class="container-fluid">
+        <div class="row clearfix">
+            <div class="col-lg-4 col-md-12">
+                <div class="card">
+                    <div class="contact-grid profile-image">
+                        <ngx-wheel class="container-fluid"
+                        #wheel
+                        width='300'
+                        height='300'
+                        spinDuration='8'
+                        [items]='items'
+                        [innerRadius]='20'
+                        [spinAmount]='10'
+                        [textOrientation]='textOrientation'
+                        [textAlignment]='textAlignment'
+                        pointerStrokeColor='black'
+                        pointerFillColor='gold'
+                        [idToLandOn]='idToLandOn'
+                        (onSpinStart)='before()'
+                        (onSpinComplete)='after()'
+                        ></ngx-wheel>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="header bg-cyan">
+                      <h2>
+                            Choose The prize you want!
+                      </h2>
+                      <ul class="header-dropdown m-r-10">
+                        <li>
+                            <button mat-raised-button color="accent" (click)="reset()">Reset</button>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="body">
+                        <div class="example-button-row">
+                            <button class="mb-2" mat-raised-button color="primary" (click)="spin(0)">Prize 0</button>
+                            <button class="mb-2" mat-raised-button color="success" (click)="spin(1)">Prize 1</button>
+                            <button class="mb-2" mat-raised-button color="warn" (click)="spin(2)">Prize 2</button>
+                        </div>
+                        <hr>
+                        <div class="example-button-row">
+                        <button   mat-raised-button color="primary" (click)="spin(3)">Prize 3</button>
+                        <button  class="m-r-2" mat-raised-button color="primary" (click)="spin(4)">Prize 4</button>
+                        <button class="m-r-2" mat-raised-button color="primary" (click)="spin(5)">Prize 5</button>
+                        </div><hr>
+                        <div class="example-button-row">
+                        <button class="m-r-2" mat-raised-button color="primary" (click)="spin(6)">Prize 6</button>
+                        <button class="m-r-2" mat-raised-button color="primary" (click)="spin(7)">Prize 7</button>
+                        <button class="m-r-2" mat-raised-button color="primary" (click)="spin(8)">Prize 8</button>
+                        </div><hr>
+                        <div class="example-button-row">
+                        <button class="m-r-2" mat-raised-button color="primary" (click)="spin(9)">Prize 9</button>
+                        <button class="m-r-2" mat-raised-button color="primary" (click)="spin(10)">Prize 10</button>
+                        <button class="m-r-2" mat-raised-button color="primary" (click)="spin(11)">Prize 11</button> 
+                    </div>                     
+                    </div>
+                  </div>
+    </div>
+    </div>
+    </div>
+</section>

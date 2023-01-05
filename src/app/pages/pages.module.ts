@@ -56,10 +56,13 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatProgressButtonsModule } from 'mat-progress-buttons';
+import { NgxWheelModule } from 'ngx-wheel';
+import { GameComponent } from './game/game.component';
+import { SimpleDialogComponent } from './advert/simpleDialog.component';
 
 
 @NgModule({
-  declarations: [AddCustomerComponent, EditAdvertComponent, AdvertComponent, AdvertDetailComponent, CommentComponent, GroupComponent, GroupDetailComponent, HomepageComponent, MyAddsDetailComponent, MyAdvertComponent, EditUserComponent, AddSellerRateComponent, SellerAdvertComponent, UserProfileComponent],
+  declarations: [SimpleDialogComponent,GameComponent,AddCustomerComponent, EditAdvertComponent, AdvertComponent, AdvertDetailComponent, CommentComponent, GroupComponent, GroupDetailComponent, HomepageComponent, MyAddsDetailComponent, MyAdvertComponent, EditUserComponent, AddSellerRateComponent, SellerAdvertComponent, UserProfileComponent, GameComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
@@ -103,6 +106,8 @@ import { MatProgressButtonsModule } from 'mat-progress-buttons';
     MatTabsModule,
     NgbModule,
     MatProgressButtonsModule,
+    NgxWheelModule,
+    
   ]
 })
 export class PagesModule { }

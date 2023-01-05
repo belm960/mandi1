@@ -9,6 +9,7 @@ import { Comments } from '../models/comments';
 import { LikeDislike } from '../models/likeDislike';
 import { PostComemnt } from '../models/PostComment';
 import { TokenStorageService } from '../shared/security/token-storage.service';
+import { SharedPost } from '../models/sharedpost';
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -26,6 +27,8 @@ export class AddGroupService {
     private MyaddUrl = `${apiUrl}/add/MyAdd`;
     private postCommentUrl =`${apiUrl}/pComment`;
     private sellProduct = `${apiUrl}/add/MySellAdd/`;
+    private shareProduct = `${apiUrl}/PerShare/detaill/`;
+    private SharedUrl = `${apiUrl}/PerShare`;
 
     constructor(private http: HttpClient, private token: TokenStorageService) {
     }
@@ -39,6 +42,10 @@ export class AddGroupService {
     }
     getSelledProducts(){
         return  this.http.get(this.sellProduct+ this.token.getId())
+    }
+
+    getSharedProducts(){
+        return  this.http.get(this.shareProduct+ this.token.getId())
     }
     getAllInPageofAdd(page: number, size: number): Observable<any> {
         const url = `${this.addUrl}?page=${page}&size=${size}`;
@@ -96,6 +103,17 @@ export class AddGroupService {
             })
         );
     }
+
+    getshare(mem:string, post: string): Observable<SharedPost> {
+        const url = `${this.SharedUrl}/${mem}/get/${post}`;
+        return this.http.get<SharedPost>(url).pipe(
+            catchError((error:HttpErrorResponse)=> {
+                console.log("Get Detail Failed");
+                window.localStorage.setItem('errork',"true")
+                return of(new SharedPost());
+            })
+        );
+    }
     update(groupInfo: GroupInfo): Observable<GroupInfo> {
         const url = `${apiUrl}/seller/product/${groupInfo.id}/edit`;
         return this.http.put<GroupInfo>(url, groupInfo, httpOptions);
@@ -147,6 +165,30 @@ export class AddGroupService {
                         "members_id":mem,
                         "posts_id":post,
                         "numUsage": num,
+                    }, httpOptions).subscribe(
+                        data => {
+                            console.log(data);
+                        });
+                }
+            
+            }
+        );
+    }
+    updateNumberOfShare(mem,post,num){
+        const url = `${apiUrl}/NumOfShare/${mem}/${post}`;
+        const urll = `${apiUrl}/NumOfShare/`;
+        return this.http.put(url,{
+            "numOfShare": num,
+        }, httpOptions).subscribe(
+            data => {
+                console.log(data);
+            },
+            (error:HttpErrorResponse)=>{
+                if(error.status==404){
+                    return this.http.post(urll,{
+                        "members_id":mem,
+                        "posts_id":post,
+                        "numOfShare":1,
                     }, httpOptions).subscribe(
                         data => {
                             console.log(data);

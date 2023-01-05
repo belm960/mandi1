@@ -69,7 +69,7 @@ export class SigninComponent implements OnInit {
 
             localStorage.setItem('STATE', 'true');
             localStorage.setItem('ROLE', "Admin");
-            this.router.navigate(['/admin/dashboard/main']);
+            this.router.navigate(['/pages/homepage']);
 
           }else if (role === "ROLE_MEMBER") {
 

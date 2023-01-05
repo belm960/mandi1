@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Selled } from 'src/app/models/selled';
 import { AddGroupService } from 'src/app/services/addgroup.service';
@@ -17,7 +17,8 @@ export class SellerAdvertComponent implements OnInit {
   private querySub: Subscription;
   selled: Selled;
   constructor(private addgroupService: AddGroupService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private router: Router) {
   }
   ngOnInit() {
     this.querySub = this.route.queryParams.subscribe(() => {
@@ -48,6 +49,10 @@ export class SellerAdvertComponent implements OnInit {
           this.title = 'Your Selled Products';
         });
     }
+  }
+
+  detail(id: any){
+      this.router.navigateByUrl('/pages/advertDetail/' + id);
   }
 
 }
