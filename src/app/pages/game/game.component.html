@@ -22,39 +22,43 @@
                         ></ngx-wheel>
                     </div>
                   </div>
-                  <div class="card">
-                    <div class="header bg-cyan">
-                      <h2>
-                            Choose The prize you want!
-                      </h2>
-                      <ul class="header-dropdown m-r-10">
-                        <li>
-                            <button mat-raised-button color="accent" (click)="reset()">Reset</button>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="body">
-                        <div class="example-button-row">
-                            <button class="mb-2" mat-raised-button color="primary" (click)="spin(0)">Prize 0</button>
-                            <button class="mb-2" mat-raised-button color="success" (click)="spin(1)">Prize 1</button>
-                            <button class="mb-2" mat-raised-button color="warn" (click)="spin(2)">Prize 2</button>
+                  <div class="row clearfix">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div class="card">
+                        <div class="header">
+                          <ul class="header-buttons-left ml-0 mb-0">
+                            <li class="dropdown">
+                              <h2>
+                                <strong>Choose The</strong> Prize</h2>
+                            </li>
+                          </ul>
+                            <ul class="header-buttons m-r-20">
+                              <li>
+                                <div class="icon-button-demo">
+                                  <button mat-mini-fab color="primary" (click)='reset()'>
+                                    <mat-icon class="col-white">delete</mat-icon>
+                                  </button>
+                                </div>
+                              </li>
+                            </ul>
                         </div>
-                        <hr>
-                        <div class="example-button-row">
-                        <button   mat-raised-button color="primary" (click)="spin(3)">Prize 3</button>
-                        <button  class="m-r-2" mat-raised-button color="primary" (click)="spin(4)">Prize 4</button>
-                        <button class="m-r-2" mat-raised-button color="primary" (click)="spin(5)">Prize 5</button>
-                        </div><hr>
-                        <div class="example-button-row">
-                        <button class="m-r-2" mat-raised-button color="primary" (click)="spin(6)">Prize 6</button>
-                        <button class="m-r-2" mat-raised-button color="primary" (click)="spin(7)">Prize 7</button>
-                        <button class="m-r-2" mat-raised-button color="primary" (click)="spin(8)">Prize 8</button>
-                        </div><hr>
-                        <div class="example-button-row">
-                        <button class="m-r-2" mat-raised-button color="primary" (click)="spin(9)">Prize 9</button>
-                        <button class="m-r-2" mat-raised-button color="primary" (click)="spin(10)">Prize 10</button>
-                        <button class="m-r-2" mat-raised-button color="primary" (click)="spin(11)">Prize 11</button> 
-                    </div>                     
+                        <div class="body table-responsive">
+                          <table class="table table-condensed">
+                            <thead>
+                              <tr>
+                                <th>#</th>
+                                <th>The Prize</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr class="bg-light-blue"  *ngFor="let prize of prizes">
+                                <th scope="row">{{prize.id}}</th>
+                                <td (click)="spin(prize.id)">{{prize.prize}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
                     </div>
                   </div>
     </div>

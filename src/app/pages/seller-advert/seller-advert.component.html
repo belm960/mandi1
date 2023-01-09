@@ -52,10 +52,10 @@
                             <mat-icon class="col-blue" matBadge="{{page.numSell}}" matBadgeColor="warn">shopping_basket</mat-icon>
                         </button>
                         <button mat-icon-button>
-                            <mat-icon class="col-green" *ngIf="page.numSell > page.sellLimit">redeem</mat-icon>
+                            <mat-icon class="col-green" (click)="redeem()" *ngIf="page.numSell > page.sellLimit">redeem</mat-icon>
                         </button>
                         <span fxFlex></span>
-                        <button mat-button color="primary" (click)="detail(page.id)">
+                        <button mat-button color="primary" (click)="detail(page.posts_id)">
                           details
                         </button>
                       </div>

@@ -59,10 +59,12 @@ import { MatProgressButtonsModule } from 'mat-progress-buttons';
 import { NgxWheelModule } from 'ngx-wheel';
 import { GameComponent } from './game/game.component';
 import { SimpleDialogComponent } from './advert/simpleDialog.component';
+import { ShareComponent } from './share/share.component';
+
 
 
 @NgModule({
-  declarations: [SimpleDialogComponent,GameComponent,AddCustomerComponent, EditAdvertComponent, AdvertComponent, AdvertDetailComponent, CommentComponent, GroupComponent, GroupDetailComponent, HomepageComponent, MyAddsDetailComponent, MyAdvertComponent, EditUserComponent, AddSellerRateComponent, SellerAdvertComponent, UserProfileComponent, GameComponent],
+  declarations: [ShareComponent,SimpleDialogComponent,GameComponent,AddCustomerComponent, EditAdvertComponent, AdvertComponent, AdvertDetailComponent, CommentComponent, GroupComponent, GroupDetailComponent, HomepageComponent, MyAddsDetailComponent, MyAdvertComponent, EditUserComponent, AddSellerRateComponent, SellerAdvertComponent, UserProfileComponent, GameComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
@@ -107,7 +109,8 @@ import { SimpleDialogComponent } from './advert/simpleDialog.component';
     NgbModule,
     MatProgressButtonsModule,
     NgxWheelModule,
-    
+
+
   ]
 })
 export class PagesModule { }

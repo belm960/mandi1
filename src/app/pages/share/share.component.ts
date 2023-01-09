@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Shared } from 'src/app/models/shared';
 import { AddGroupService } from 'src/app/services/addgroup.service';
@@ -17,7 +17,8 @@ export class ShareComponent implements OnInit {
   private querySub: Subscription;
   shared: Shared;
   constructor(private addgroupService: AddGroupService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private router: Router) {
   }
   ngOnInit() {
     this.querySub = this.route.queryParams.subscribe(() => {
@@ -40,14 +41,15 @@ export class ShareComponent implements OnInit {
     }
   }
   getProds() {
-    if (this.route.snapshot.url.length == 1) {
       this.addgroupService.getSharedProducts()
         .subscribe(page => {
           this.page = page;
           console.log(page);
           this.title = 'Your Shared Products';
         });
-    }
   }
 
+  detail(id: any){
+      this.router.navigateByUrl('/pages/advertDetail/'+id);
+  }
 }

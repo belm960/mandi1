@@ -24,7 +24,7 @@
         <div class="col-lg-4 col-md-12">
               <div class="card">
                 <div class="contact-grid profile-image">
-                  <img src="assets/images/user/usrbig4.jpg" alt="">
+                  <img src="{{addInfo.photo}}" alt="">
                 </div>
               </div>
               <div class="card">
@@ -35,7 +35,7 @@
                   </h2>
                   <ul class="header-dropdown m-r-10">
                     <li>
-                      <a (click)="routeToEdit(addInfo.id)">
+                      <a *ngIf="(role==roles.Admin) || (role==roles.Member)" (click)="routeToEdit(addInfo.id)">
                         <i class="material-icons">edit</i>
                       </a>
                     </li>
@@ -44,11 +44,8 @@
                 <div class="body">
                   Category: {{addInfo.category}}
                   <hr>
-                <div  class="alert alert-success" disabled *ngIf="user&& (!numUsageFull()&&!sign)">
+                <div  class="alert alert-success" disabled *ngIf="user&& (!numUsageFull())">
                         Used {{numUsage}} for Customer Price!
-                </div>
-                <div class="alert alert-warning" disabled *ngIf="user && (!numUsageFull() &&sign)">
-                  you Haven't used this product yet!
                 </div>
                 <div  class="alert alert-danger" disabled *ngIf="user&& numUsageFull()">
                   The Minimum Price: {{minPrice}}

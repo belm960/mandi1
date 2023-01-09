@@ -38,7 +38,6 @@ export class UserProfileComponent implements OnInit {
       },error=>{console.log(error)}
     )
   }
-
   onSubmit() {
     this.userService.updateSecurity(this.userForm.value).subscribe(u => {
       this.userService.nameTerms.next(u.fname);
@@ -53,9 +52,7 @@ export class UserProfileComponent implements OnInit {
     let url = '/';
     this.router.navigateByUrl(url);
   }
-
   edit(id){
     this.router.navigateByUrl('/pages/editUser');
   }
-
 }

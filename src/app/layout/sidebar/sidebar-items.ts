@@ -1206,5 +1206,18 @@ export const ROUTES: RouteInfo[] = [
       },
     ],
   },
+  {
+    path: '/authentication/signin',
+    title: 'Logout',
+    moduleName: 'logout',
+    iconType: 'material-icons-two-tone',
+    icon: 'power_settings_new',
+    class: '',
+    groupTitle: false,
+    badge: '',
+    badgeClass: '',
+    role: ['All'],
+    submenu: [],
+  },
   
 ];

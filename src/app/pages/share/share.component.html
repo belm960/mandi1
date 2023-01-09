@@ -28,19 +28,18 @@
             </div>
             <div class="body">
               <div class="row">
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" *ngFor="let page of page">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" *ngFor="let page of page;">
                   <mat-card>
                     <mat-card-header>
-                      <img mat-card-avatar src="assets/images/user/user3.jpg">
                       <mat-card-title>{{page.name}}</mat-card-title>
                       <mat-card-subtitle>{{page.companyName}}</mat-card-subtitle>
                     </mat-card-header>
                     <img mat-card-image src="{{page.photo}}">
                     <mat-card-content>
-                      <p>{{page.desription}}</p>
+                      <p>{{page.description}}</p>
                       <hr>
-                      <p *ngIf="page.sellLimit > page.numShare">Your Prize will be{{page.sellPrize}}</p>
-                      <p *ngIf="page.numShare > page.sellLimit">You have got prize. Your Prize is {{page.sellPrize}}</p>
+                      <p *ngIf="page.sellLimit > page.numOfShare">Your Prize will be{{page.sellPrize}}</p>
+                      <p *ngIf="page.numOfShare > page.sellLimit">You have got prize. Your Prize is {{page.sellPrize}}</p>
                     </mat-card-content>
                     <mat-divider></mat-divider>
                     <mat-card-actions>
@@ -55,7 +54,7 @@
                             <mat-icon class="col-green" *ngIf="page.numOfShare > page.sellLimit">redeem</mat-icon>
                         </button>
                         <span fxFlex></span>
-                        <button mat-button color="primary" (click)="detail(page.id)">
+                        <button mat-button color="primary" (click)="detail(page.posts_id)">
                           details
                         </button>
                       </div>

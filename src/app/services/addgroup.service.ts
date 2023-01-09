@@ -43,7 +43,6 @@ export class AddGroupService {
     getSelledProducts(){
         return  this.http.get(this.sellProduct+ this.token.getId())
     }
-
     getSharedProducts(){
         return  this.http.get(this.shareProduct+ this.token.getId())
     }
@@ -118,8 +117,8 @@ export class AddGroupService {
         const url = `${apiUrl}/seller/product/${groupInfo.id}/edit`;
         return this.http.put<GroupInfo>(url, groupInfo, httpOptions);
     }
-    updateadd(addInfo: AddInfo): Observable<AddInfo> {
-        const url = `${apiUrl}/add/Add/${addInfo.id}`;
+    updateadd(addInfo: AddInfo,id: string): Observable<AddInfo> {
+        const url = `${apiUrl}/add/Add/${id}`;
         return this.http.put<AddInfo>(url, addInfo, httpOptions);
     }
     updateaddLikeDislike(mem,post,likes,dislikes){

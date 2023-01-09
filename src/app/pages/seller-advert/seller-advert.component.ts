@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Selled } from 'src/app/models/selled';
 import { AddGroupService } from 'src/app/services/addgroup.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-seller-advert',
@@ -12,6 +13,7 @@ import { AddGroupService } from 'src/app/services/addgroup.service';
 export class SellerAdvertComponent implements OnInit {
 
   title: string;
+  coupon: string = Math.floor(Math.random() * 100000000).toString();
   page: any;
   private paramSub: Subscription;
   private querySub: Subscription;
@@ -49,6 +51,9 @@ export class SellerAdvertComponent implements OnInit {
           this.title = 'Your Selled Products';
         });
     }
+  }
+  redeem(){
+    Swal.fire('Thank You', 'Your Coupon Code is: ' + this.coupon, 'success')
   }
 
   detail(id: any){

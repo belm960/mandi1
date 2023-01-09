@@ -21,20 +21,35 @@ export class EditAdvertComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private fb: FormBuilder) {
+
+        this.addId = this.route.snapshot.paramMap.get('id');
+        if(this.addId){
+            this.title="Edit Advert";
+            this.addgroupService.getDetails(this.addId).subscribe(
+              data =>{
+                this.advert = data;
+              },
+              error =>{
+                console.log(error);
+              }
+            );
+        }
+        else{this.title="Add Advert"}
+
                 this.advertForm = this.fb.group(
                   {
-                    name: [this.advert.name || ''],
-                    companyName:[this.advert.companyName || ''],
-                    photo: [this.advert.photo || ''],
-                    category: [this.advert.category || ''],
-                    description: [this.advert.description || ''],
-                    teleLink: [this.advert.teleLink || ''],
-                    facebookLink: [this.advert.facebookLink || ''],
-                    ownerId: [this.advert.ownerId || ''],
-                    minPrice:[this.advert.minPrice || ''],
-                    usageLimit: [this.advert.usageLimit || ''],
-                    sellLimit: [this.advert.sellLimit || ''],
-                    sellPrize: [this.advert.sellPrize || ''],
+                    name: [this.advert.name],
+                    companyName:[this.advert.companyName],
+                    photo: [this.advert.photo],
+                    category: [this.advert.category],
+                    description: [this.advert.description],
+                    teleLink: [this.advert.teleLink],
+                    facebookLink: [this.advert.facebookLink],
+                    ownerId: [this.advert.ownerId],
+                    minPrice:[this.advert.minPrice],
+                    usageLimit: [this.advert.usageLimit],
+                    sellLimit: [this.advert.sellLimit],
+                    sellPrize: [this.advert.sellPrize],
 
                   }
                 );
@@ -42,16 +57,12 @@ export class EditAdvertComponent implements OnInit {
   }
 
     ngOnInit() {
-        this.addId = this.route.snapshot.paramMap.get('id');
-        if(this.addId){
-            this.title="Edit Advert";
-        }
-        else{this.title="Add Advert"}
+        
 
     }
 
     update() {
-        this.addgroupService.updateadd(this.advert).subscribe(advert => {
+        this.addgroupService.updateadd(this.advert, this.addId).subscribe(advert => {
                 Swal.fire('Successfull','you have updated advert info','success');
                 this.router.navigate(['/pages/advert']);
             },
